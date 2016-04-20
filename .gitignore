@@ -36,3 +36,16 @@ build/
 *.d
 utests*
 systest
+
+# CMake and Eclipse files
+.cproject
+.project
+.settings/
+CMakeCache.txt
+CMakeFiles/
+CTestTestfile.cmake
+cmake_install.cmake
+
+# Temporary build directories
+bin/
+include/
