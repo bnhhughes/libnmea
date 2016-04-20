@@ -7,6 +7,12 @@ set(LIBNMEA_PATCH_VERSION 2)
 set(LIBNMEA_VERSION
   ${LIBNMEA_MAJOR_VERSION}.${LIBNMEA_MINOR_VERSION}.${LIBNMEA_PATCH_VERSION})
 
+set (warning_flags "-Wall -pedantic")
+set (c_language_flags "-std=gnu11 -g")
+set (cxx_language_flags "-std=c++11 -g")
+set (CMAKE_C_FLAGS  "${CMAKE_C_FLAGS} ${warning_flags} ${c_language_flags}" )
+set (CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} ${warning_flags} ${cxx_language_flags}" )
+
 set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake/")
 
 #Define cmake install path
