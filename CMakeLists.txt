@@ -1,6 +1,12 @@
 cmake_minimum_required (VERSION 2.8)
 project(libnmea C)
 
+set (warning_flags "-Wall -pedantic")
+set (c_language_flags "-std=gnu11 -g")
+set (cxx_language_flags "-std=c++11 -g")
+set (CMAKE_C_FLAGS  "${CMAKE_C_FLAGS} ${warning_flags} ${c_language_flags}" )
+set (CMAKE_CXX_FLAGS  "${CMAKE_CXX_FLAGS} ${warning_flags} ${cxx_language_flags}" )
+
 option(NMEA_BUILD_STATIC_LIB "Build static libnmea" ON)
 option(NMEA_BUILD_SHARED_LIB "Build shared libnmea" ON)
 option(NMEA_BUILD_EXAMPLES "Build examples" ON)
@@ -155,7 +161,7 @@ if (NMEA_UNIT_TESTS)
     #
     # Lib unit tests.
     #
-    add_executable(utests tests/test_lib.c)
+    add_executable(utests tests/unit-tests/test_lib.c)
 
     if (NMEA_UNIT_TESTS_LINK_STATIC)
         target_link_libraries(utests nmea)
@@ -166,12 +172,12 @@ if (NMEA_UNIT_TESTS)
     #
     # Parse unit tests.
     #
-    add_executable(utests-parse src/parsers/parse.c tests/test_parse.c)
+    add_executable(utests-parse src/parsers/parse.c tests/unit-tests/test_parse.c)
 
     #
     # NMEA unit tests.
     #
-    add_executable(utests-nmea src/nmea/parser.c tests/test_nmea_helpers.c)
+    add_executable(utests-nmea src/nmea/parser.c tests/unit-tests/test_nmea_helpers.c)
     target_link_libraries(utests-nmea dl)
 
     set(TESTS utests utests-parse utests-nmea)
