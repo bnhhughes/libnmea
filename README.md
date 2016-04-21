@@ -10,7 +10,7 @@ any sentence missing, please add it by contributing to the code.
 
 Home page: [http//nmea.io](http://nmea.io/).
 
-Supported sentences: `GPGLL`, `GPGGA`, `GPRMC`, `GPGSA`, `GPVTG`, and `GPTXT`.
+Supported sentences: `GPGLL`, `GPGGA`, `GPRMC`, `GPGSA`, `GPVTG`, `GPGSV`, and `GPTXT`.
 
 To build
 --------

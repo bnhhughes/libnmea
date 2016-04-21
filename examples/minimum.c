@@ -9,6 +9,7 @@
 #include <nmea/gpgsa.h>
 #include <nmea/gpvtg.h>
 #include <nmea/gptxt.h>
+#include <nmea/gpgsv.h>
 
 int
 main(void)
@@ -17,7 +18,8 @@ main(void)
 	//char sentence[] = "$GPGLL,4916.45,N,12311.12,W,225444,A\r\n";
 	//char sentence[] = "$GPGSA,A,1,,,,,,,,,,,,,99.99,99.99,99.99*30\r\n";
 	//char sentence[] = "$GPTXT,01,03,02,u-blox ag - www.u-blox.com*50\r\n";
-	char sentence[] = "$GPVTG,054.7,T,034.4,M,005.5,N,010.2,K\r\n";
+	//char sentence[] = "$GPVTG,054.7,T,034.4,M,005.5,N,010.2,K\r\n";
+	char sentence[] = "$GPGSV,3,1,11,03,03,111,00,04,15,270,00,06,01,010,00,13,06,292,00*74\r\n";
 
 	printf("Parsing NMEA sentence: %s", sentence);
 
@@ -73,6 +75,20 @@ main(void)
 	  printf("\tID: %d %d %d\n", gptxt->id_00, gptxt->id_01, gptxt->id_02);
 	  printf("\t%s\n", gptxt->text);
 	}
+
+  if (NMEA_GPGSV == data->type)
+  {
+    nmea_gpgsv_s *gpgsv = (nmea_gpgsv_s *) data;
+
+    printf("GPGSV Sentence:\n");
+    printf("\tNum: %d\n", gpgsv->nummsgs);
+    printf("\tID:  %d\n", gpgsv->msgnum);
+    printf("\tSV:  %d\n", gpgsv->numsvs);
+    printf("\t#1:  %d %d %d %d\n", gpgsv->s0_prn, gpgsv->s0_el_deg, gpgsv->s0_az_deg, gpgsv->s0_snr_db);
+    printf("\t#2:  %d %d %d %d\n", gpgsv->s1_prn, gpgsv->s1_el_deg, gpgsv->s1_az_deg, gpgsv->s1_snr_db);
+    printf("\t#3:  %d %d %d %d\n", gpgsv->s2_prn, gpgsv->s2_el_deg, gpgsv->s2_az_deg, gpgsv->s2_snr_db);
+    printf("\t#4:  %d %d %d %d\n", gpgsv->s3_prn, gpgsv->s3_el_deg, gpgsv->s3_az_deg, gpgsv->s3_snr_db);
+  }
 
 	nmea_free(data);
 	}
