@@ -15,9 +15,9 @@ main(void)
 {
 	// Sentence string to be parsed
 	//char sentence[] = "$GPGLL,4916.45,N,12311.12,W,225444,A,*1D\r\n";
-	//char sentence[] = "$GPGSA,A,1,,,,,,,,,,,,,99.99,99.99,99.99*30\n\n";
-	//char sentence[] = "$GPTXT,01,03,02,u-blox ag - www.u-blox.com*50\n\n";
-	char sentence[] = "$GPVTG,054.7,T,034.4,M,005.5,N,010.2,K\n\n";
+	//char sentence[] = "$GPGSA,A,1,,,,,,,,,,,,,99.99,99.99,99.99*30\r\n";
+	//char sentence[] = "$GPTXT,01,03,02,u-blox ag - www.u-blox.com*50\r\n";
+	char sentence[] = "$GPVTG,054.7,T,034.4,M,005.5,N,010.2,K\r\n";
 
 	printf("Parsing NMEA sentence: %s", sentence);
 
