@@ -40,46 +40,70 @@ int
 parse(nmea_parser_s *parser, char *value, int val_index)
 {
 	nmea_gpgsv_s *data = (nmea_gpgsv_s *) parser->data;
+	int v = strtol(value, NULL, 10);
 
-	switch (val_index) {
-	case NMEA_GPGSV_SENTENCES:
-		/* Parse sentences */
-		data->sentences = atoi(value);
-		break;
-
-	case NMEA_GPGSV_SENTENCE_NUMBER:
-		/* Parse latitude */
-		data->sentence_number = atoi(value);
-		break;
-
-	case NMEA_GPGSV_SATELLITES:
-		/* Parse cardinal direction */
-		data->satellites = atoi(value);
-		break;
-
-	case NMEA_GPGSV_PRN:
-		/* Parse longitude */
-		data->prn = atoi(value);
-		break;
-
-	case NMEA_GPGSV_ELEVATION:
-		/* Parse cardinal direction */
-		data->elevation = atoi(value);
-		break;
-
-	case NMEA_GPGSV_AZIMUTH:
-		/* Parse number of satellies */
-		data->azimuth = atoi(value);
-		break;
-
-	case NMEA_GPGSV_SNR:
-		/* Parse altitude */
-		data->snr = atoi(value);
-		break;
-
-	default:
-		break;
-	}
+  switch (val_index)
+  {
+    case NMEA_GPGSV_NUMMSGS:
+      data->nummsgs = v;
+      break;
+    case NMEA_GPGSV_MSGNUM:
+      data->msgnum = v;
+      break;
+    case NMEA_GPGSV_NUMSVS:
+      data->numsvs = v;
+      break;
+    case NMEA_GPGSV_S0_PRN:
+      data->s0_prn = v;
+      break;
+    case NMEA_GPGSV_S0_EL:
+      data->s0_el_deg = v;
+      break;
+    case NMEA_GPGSV_S0_AZ:
+      data->s0_az_deg = v;
+      break;
+    case NMEA_GPGSV_S0_SNR:
+      data->s0_snr_db = v;
+      break;
+    case NMEA_GPGSV_S1_PRN:
+      data->s1_prn = v;
+      break;
+    case NMEA_GPGSV_S1_EL:
+      data->s1_el_deg = v;
+      break;
+    case NMEA_GPGSV_S1_AZ:
+      data->s1_az_deg = v;
+      break;
+    case NMEA_GPGSV_S1_SNR:
+      data->s1_snr_db = v;
+      break;
+    case NMEA_GPGSV_S2_PRN:
+      data->s2_prn = v;
+      break;
+    case NMEA_GPGSV_S2_EL:
+      data->s2_el_deg = v;
+      break;
+    case NMEA_GPGSV_S2_AZ:
+      data->s2_az_deg = v;
+      break;
+    case NMEA_GPGSV_S2_SNR:
+      data->s2_snr_db= v;
+      break;
+    case NMEA_GPGSV_S3_PRN:
+      data->s3_prn= v;
+      break;
+    case NMEA_GPGSV_S3_EL:
+      data->s3_el_deg = v;
+      break;
+    case NMEA_GPGSV_S3_AZ:
+      data->s3_az_deg = v;
+      break;
+    case NMEA_GPGSV_S3_SNR:
+      data->s3_snr_db = v;
+      break;
+    default:
+      break;
+  }
 
 	return 0;
 }
