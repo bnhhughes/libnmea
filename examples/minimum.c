@@ -14,10 +14,10 @@ int
 main(void)
 {
 	// Sentence string to be parsed
-	//char sentence[] = "$GPGLL,4916.45,N,12311.12,W,225444,A\n\n";
-	//char sentence[] = "$GPGSA,A,1,,,,,,,,,,,,,99.99,99.99,99.99*30\n\n";
-	//char sentence[] = "$GPTXT,01,03,02,u-blox ag - www.u-blox.com*50\n\n";
-	char sentence[] = "$GPVTG,054.7,T,034.4,M,005.5,N,010.2,K\n\n";
+	//char sentence[] = "$GPGLL,4916.45,N,12311.12,W,225444,A\r\n";
+	//char sentence[] = "$GPGSA,A,1,,,,,,,,,,,,,99.99,99.99,99.99*30\r\n";
+	//char sentence[] = "$GPTXT,01,03,02,u-blox ag - www.u-blox.com*50\r\n";
+	char sentence[] = "$GPVTG,054.7,T,034.4,M,005.5,N,010.2,K\r\n";
 
 	printf("Parsing NMEA sentence: %s", sentence);
 
@@ -27,6 +27,8 @@ main(void)
 	// Parse...
 	data = nmea_parse(sentence, strlen(sentence), 0);
 
+	if (NULL != data)
+	{
 	if (NMEA_GPGLL == data->type) {
 		nmea_gpgll_s *gpgll = (nmea_gpgll_s *) data;
 
@@ -73,6 +75,11 @@ main(void)
 	}
 
 	nmea_free(data);
+	}
+	else
+	{
+	  printf("BAD PARSE!\n");
+	}
 
 	return 0;
 }
