@@ -52,7 +52,7 @@ source_group("Source" FILES ${NMEA_SRC})
 
 if (NMEA_BUILD_STATIC_LIB)
     add_library(nmea STATIC ${NMEA_SRC})
-    target_link_libraries(nmea dl)
+    target_link_libraries(nmea :libdl.so)
     install(TARGETS nmea DESTINATION lib)
 endif()
 
@@ -63,7 +63,7 @@ if (NMEA_BUILD_SHARED_LIB)
     endif()
 
     add_library(nmea_shared SHARED ${NMEA_SRC})
-    target_link_libraries(nmea_shared dl)
+    target_link_libraries(nmea_shared :libdl.so)
 
     if (UNIX)
         set_target_properties(nmea_shared PROPERTIES OUTPUT_NAME nmea)
@@ -178,7 +178,7 @@ if (NMEA_UNIT_TESTS)
     # NMEA unit tests.
     #
     add_executable(utests-nmea src/nmea/parser.c tests/unit-tests/test_nmea_helpers.c)
-    target_link_libraries(utests-nmea dl)
+    target_link_libraries(utests-nmea :libdl.so)
 
     set(TESTS utests utests-parse utests-nmea)
 
