@@ -44,7 +44,7 @@ When the library is built and installed, you can compile the example programs:
 
 ```sh
 $ make examples
-$ echo -ne "\$GPGLL,4916.45,N,12311.12,W,225444,A,*1D\n\n" | build/parse_stdin
+$ echo -ne "\$GPGLL,4916.45,N,12311.12,W,225444,A,*1D\r\n" | build/parse_stdin
 ```
 
 If the library was installed with a custom prefix, you may have to set the
