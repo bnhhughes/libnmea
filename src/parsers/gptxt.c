@@ -43,8 +43,6 @@ parse(nmea_parser_s *parser, char *value, int val_index)
   
   memset(data->text, 0, 64);
 
-  memset(data->text, 0, 64);
-
   switch (val_index)
   {
     case NMEA_GPTXT_ID00:
